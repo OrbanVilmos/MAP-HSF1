@@ -29,4 +29,16 @@ public class Library {
         }
         return result;
     }
+
+    public double getAveragePageCount(List<Book> bookList) {
+        if (bookList == null || bookList.isEmpty()) {
+            return 0.0;
+        }
+        int totalPages = 0;
+        for (Book book : bookList) {
+            totalPages += book.getPageCount();
+        }
+        return (double) totalPages / bookList.size();
+    }
+
 }
