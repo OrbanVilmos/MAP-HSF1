@@ -66,4 +66,17 @@ public class Library {
         }
         return mostExpensive;
     }
+
+    public List<Book> getBooksWithMinPageCount(List<Book> bookList, int minPages) {
+        List<Book> result = new ArrayList<>();
+        if (bookList == null) {
+            return result;
+        }
+        for (Book book : bookList) {
+            if (book.getPageCount() >= minPages) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
 }
