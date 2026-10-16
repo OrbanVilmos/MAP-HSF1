@@ -79,4 +79,40 @@ public class Library {
         }
         return result;
     }
+
+    public List<Book> getBestTwoBooksWithinBudget(List<Book> bookList, double budget) {
+        List<Book> bestPair = new ArrayList<>();
+        if (bookList == null || bookList.size() < 2) {
+            return bestPair;
+        }
+
+        double maxPriceSum = -1.0;
+        int maxPageSum = -1;
+
+        for (int i = 0; i < bookList.size(); i++) {
+            for (int j = i + 1; j < bookList.size(); j++) {
+                Book b1 = bookList.get(i);
+                Book b2 = bookList.get(j);
+                double currentPriceSum = b1.getPrice() + b2.getPrice();
+
+                if (currentPriceSum <= budget) {
+                    int currentPageSum = b1.getPageCount() + b2.getPageCount();
+
+                    if (currentPriceSum > maxPriceSum) {
+                        maxPriceSum = currentPriceSum;
+                        maxPageSum = currentPageSum;
+                        bestPair.clear();
+                        bestPair.add(b1);
+                        bestPair.add(b2);
+                    } else if (currentPriceSum == maxPriceSum && currentPageSum > maxPageSum) {
+                        maxPageSum = currentPageSum;
+                        bestPair.clear();
+                        bestPair.add(b1);
+                        bestPair.add(b2);
+                    }
+                }
+            }
+        }
+        return bestPair;
+    }
 }
