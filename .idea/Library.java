@@ -41,4 +41,29 @@ public class Library {
         return (double) totalPages / bookList.size();
     }
 
+    public List<Book> getBooksWithinPriceLimit(List<Book> bookList, double maxPrice) {
+        List<Book> result = new ArrayList<>();
+        if (bookList == null) {
+            return result;
+        }
+        for (Book book : bookList) {
+            if (book.getPrice() <= maxPrice) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    public Book getMostExpensiveBook(List<Book> bookList) {
+        if (bookList == null || bookList.isEmpty()) {
+            return null;
+        }
+        Book mostExpensive = bookList.get(0);
+        for (Book book : bookList) {
+            if (book.getPrice() > mostExpensive.getPrice()) {
+                mostExpensive = book;
+            }
+        }
+        return mostExpensive;
+    }
 }
