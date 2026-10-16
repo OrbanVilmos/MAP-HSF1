@@ -42,7 +42,6 @@ public class Main {
         for (Book b : thickBooks) {
             System.out.println("- " + b.getTitle() + " (" + b.getPageCount() + " pages)");
         }
-
         System.out.println("\n=== Task 6: Two Books Within Budget (Budget: 55 Euro) ===");
         List<Book> bestPair = library.getBestTwoBooksWithinBudget(library.getBooks(), 55.0);
         if (bestPair.size() == 2) {
